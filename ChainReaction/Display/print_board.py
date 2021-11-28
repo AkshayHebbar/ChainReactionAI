@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from textwrap import wrap
 from matplotlib import rcParams
 from Util.utilities import valid_states
 
@@ -13,8 +14,9 @@ def print_board(board, player):
 
     plr2_pos =[(x,y) for x,y in zip(*np.where(board<0))]
     #print(" player 2 : " , list(plr2_pos))
+
     plt.figure(figsize=(m,n))
-    
+
     plt.axis([0, (n), (m ), 0])
     plt.xticks(np.linspace(0, n, n+1 ), [])
     plt.yticks(np.linspace(0, m, m+1), [])
@@ -27,8 +29,12 @@ def print_board(board, player):
     plt.savefig("Board.png", dpi=300,format='png')
     #plt.text(m+1,n-1, 'Choose action:\n ' +str(valid_states(board,player)), verticalalignment='center', fontsize = 10)
     plt.title("Chain Reaction")
-    plt.xlabel('Choose action: ' +str([(x,y) for x,y in valid_states(board,player)]), loc='left')
-    plt.ion()
+    a = ""
+    for x,y in valid_states(board,player):
+        a =a + "("+str(x) +"," + str(y)+ ')' + ','
+    ax='\n'.join(wrap(a,2*m*n))
+    plt.xlabel('Choose action: \n'+ax, loc='left', fontsize=10)
+    plt.subplots_adjust(bottom=0.3)
+    #plt.xlabel('Choose action: '+str([(x,y) for x,y in valid_states(board,player)]), loc='left')
     plt.show(block = False)
-    plt.pause(0.01)
-    plt.close()
+
