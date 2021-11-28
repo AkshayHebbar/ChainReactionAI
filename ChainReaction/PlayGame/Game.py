@@ -15,8 +15,19 @@ def start_game(opponent:int):
     while(not game_over(board,player*-1)):
         won = 1 if player>0 else 2
         turn_count+=1
-        position = [int(x) for x in input("enter the position of your atom : ").split()]
-        pos = (int(position[0]), int(position[1]))
+        if (opponent == 3 and player == -1):
+            pos = (0,0)
+            # pos = minmax(board)
+            print("Implement Tree Based AI")
+        elif (opponent == 2 and player == -1):
+            valid_pos = valid_states(board,player)
+            index = np.random.choice([i for i,v in enumerate(valid_pos)])
+            print("choosing pos:", valid_pos[index])
+            pos = (valid_pos[index][0],valid_pos[index][1])
+        else:
+            position = [int(x) for x in input(f"player{won} enter the position of your atom : ").split()]
+            pos = (int(position[0]), int(position[1]))
+            
         if(pos in valid_states(board,player)):
             board, success = insert_atom(board,pos,player)
             if success:

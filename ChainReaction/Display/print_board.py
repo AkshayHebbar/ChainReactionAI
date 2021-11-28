@@ -30,4 +30,5 @@ def print_board(board, player):
     plt.xlabel('Choose action: ' +str([(x,y) for x,y in valid_states(board,player)]), loc='left')
     plt.ion()
     plt.show(block = False)
-    plt.pause(0.1)
+    plt.pause(0.01)
+    plt.close()
