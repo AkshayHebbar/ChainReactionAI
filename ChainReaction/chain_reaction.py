@@ -1,4 +1,4 @@
-from PlayGame.Game import *
+from PlayGame.game import *
 
 if __name__ == "__main__":
     print("Choose your opponent :")
