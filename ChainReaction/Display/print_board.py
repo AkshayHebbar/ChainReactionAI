@@ -30,7 +30,8 @@ def print_board(board, player):
     #plt.text(m+1,n-1, 'Choose action:\n ' +str(valid_states(board,player)), verticalalignment='center', fontsize = 10)
     plt.title("Chain Reaction")
     a = ""
-    for x,y in valid_states(board,player):
+    #Printing valid actions for next players turn, hence multiplying by -1
+    for x,y in valid_states(board,-1*player):
         a =a + "("+str(x) +"," + str(y)+ ')' + ','
     ax='\n'.join(wrap(a,2*m*n))
     plt.xlabel('Choose action: \n'+ax, loc='left', fontsize=10)
@@ -38,6 +39,7 @@ def print_board(board, player):
     #plt.xlabel('Choose action: '+str([(x,y) for x,y in valid_states(board,player)]), loc='left')
     plt.ion()
     plt.show(block = False)
+    #plt.clf()
     plt.pause(0.01)
     plt.close()
 
