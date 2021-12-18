@@ -4,24 +4,26 @@ from Display.print_board import print_board
 
 def insert_atom(board,pos:tuple,player:int):
   #x,y = val
-  plr = 1 if player>0 else -1
-  insert_success = False
+  #plr = 1 if player>0 else -1
+  #insert_success = False
   #check if pos is valid in grid
   if(board[pos]==0):
-    board[pos]+= plr
+    #board[pos]+= plr
+    board[pos]+= player
     print_board(board,player)
-    insert_success = True
-  elif(np.sign(board[pos]) == plr):
+    player = player*-1
+  elif(np.sign(board[pos]) == player):
     board = create_chain(board,pos,player)
     print_board(board,player)
-    insert_success = True
+    player = player*-1
   else:
     print("**Invalid Action! Try a different square**")  
-  return board,insert_success
+  return (board,player)
 
 
 def create_chain(board,pos:tuple,player:int):
-  if(abs(board[pos])<(check_instability(board,pos))):
+  instability = check_instability(board,pos)
+  if(abs(board[pos])< instability):
     board[pos] = player*(abs(board[pos])+1)
   else:
     neighbors = get_adjacent(board,pos)
