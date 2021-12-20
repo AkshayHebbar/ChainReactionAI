@@ -14,9 +14,21 @@ References:
 Dependencies Used:
 
 For Chain Reaction the following are utilized
+1.  Python - version 3.8
 1.	Numpy
+2.  Pytorch
 2.	Matplotlib
 3.	TextWrap
+
+Links
+
+References used from :
+
+Author: Katz, Garrett
+Topic : Minimax Game Trees, Neural Networks
+Syracuse University
+https://colab.research.google.com/drive/1YR8HjSw8K0n684S_oGnZPpU69SmOw355?usp=sharing#scrollTo=N6kj91QAfbuW
+https://colab.research.google.com/drive/1JhOppwXwm47yk-AK7y7L5WTaaNDgCWXD?usp=sharing#scrollTo=TtHr_xOA7fa7
 
 How to run the program?
 
@@ -26,6 +38,15 @@ STEP 3: Go to the ChainReaction folder and run the “chain_reaction.py” ($ py
 STEP 4: Select if you want to play the game with a Human, Baseline AI or Tree Based AI by inputting the corresponding number.
 *Implementation of Tree Based AI is in progress*
 STEP 5: Play the game!
+
+
+Since the game is interactive based on graphical displays, a Windows based machine would be ideal to run the game.
+This has been tested using the following configurations:
+OS: Windows
+IDE: Python IDLE 3.8 64x
+RAM: 16 GB
+Disk Space: 250KB
+
 
 IMPORTANT NOTE!
 
