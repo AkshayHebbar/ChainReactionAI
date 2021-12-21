@@ -1,4 +1,3 @@
-#Author: Srinidhi Shivaram
 from PlayGame.game import start_game
 from PlayGame.simulate import simulate_game
 from PlayGame.batch import simulate

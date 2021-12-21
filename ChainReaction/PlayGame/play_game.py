@@ -1,5 +1,3 @@
-#Author: Akshay Hebbar
-
 import numpy as np
 from Util.utilities import *
 #from Display.print_board import print_board

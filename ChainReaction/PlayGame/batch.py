@@ -24,7 +24,7 @@ def simulate(opponent:int):
         print("Simulating 100 events of TreeNN_AI vs BaselineAI")
         hist = [],[]
         for i in range(100):
-            size = 3,3
+            size = 5,5
             res = simulate_game(opponent,size)
             hist[0].append(res[0])
             hist[1].append(res[1])

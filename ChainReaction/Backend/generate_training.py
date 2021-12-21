@@ -66,5 +66,5 @@ def generate_examples():
     _, utilities = zip(*testing_examples)
     baseline_error =sum((u-0)**2 for u in utilities) / len(utilities)
     print("Baseline Error",baseline_error)
-    
+    print("training Ex:", training_examples[0])
     return training_examples,testing_examples, baseline_error

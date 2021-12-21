@@ -61,8 +61,8 @@ def nn_create():
     cnn_viz(net)
     optimizer = tr.optim.SGD(net.parameters(), lr=0.00001, momentum=0.9)
 
-    training_examples,testing_examples,baseline = generate_examples()
-    print("train:", training_examples[1])
+    #training_examples,testing_examples,baseline = generate_examples()
+    #print("train:", training_examples[1])
     
     states, utilities = zip(*training_examples)
     training_batch = tr.stack(tuple(map(encode, states))), tr.tensor(utilities)

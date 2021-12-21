@@ -1,4 +1,3 @@
-#Author: Akshay Hebbar
 from CreateBoard.create_board import init
 from Display.print_board import print_board
 from PlayGame.play_game import insert_atom
