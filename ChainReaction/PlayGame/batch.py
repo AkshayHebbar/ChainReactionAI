@@ -10,16 +10,27 @@ def simulate(opponent:int):
         for i in range(100):
             size = np.random.randint(2,5),np.random.randint(2,5)
             res = simulate_game(opponent,size)
-            print(res)
+            #print(res)
             hist[0].append(res[0])
             hist[1].append(res[1])
-            print(hist)
+            #print(hist)
         pt.plot(hist[0], 'b-')
         pt.plot(hist[1], 'r-')
         pt.plot()
         pt.legend(["Nodes","Scores"])
-        pt.show()   
-        print("********** End of Simulation. Thank you for playing **********")
+        pt.show()
 
     else:
         print("Simulating 100 events of TreeNN_AI vs BaselineAI")
+        hist = [],[]
+        for i in range(100):
+            size = 3,3
+            res = simulate_game(opponent,size)
+            hist[0].append(res[0])
+            hist[1].append(res[1])
+        pt.plot(hist[0], 'b-')
+        pt.plot(hist[1], 'r-')
+        pt.plot()
+        pt.legend(["Nodes","Scores"])
+        pt.show()
+    print("********** End of Simulation. Thank you for playing **********")

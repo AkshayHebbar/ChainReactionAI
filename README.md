@@ -6,7 +6,7 @@ A chain reaction game based on AI
 
 References:
 
-1. Minimax Algorithm
+1. Minimax Algorithm - Depth Limited : 2 since the state space for th game is large
 2. Numpy Documentation
 3. Matplotlib Documentation
 4. TextWrap Documentation

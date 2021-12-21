@@ -4,6 +4,7 @@ from Display.print_board import print_board
 from PlayGame.play_game import insert_atom
 from Util.utilities import *
 from Backend.cr_minimax import treeAI
+from Backend.neural_net import dl_minimax,nn_eval
 
 def simulate_game(opponent:int,size):
     # implement functionality for opponent
@@ -26,7 +27,11 @@ def simulate_game(opponent:int,size):
         turn_count+=1
         
         if (opponent == 2 and player == -1):
-            print("CNN")
+            print("CNN Choosing pos")
+            nodecount = 0
+            _, a, nodes = dl_minimax((board,player), 2, nn_eval)
+            pos = [(x,y) for x,y in valid_states(board,player)][a]
+            codecount+=nodes
         elif (opponent == 1 and player == -1):
             max_depth = 2
             pos,nodes = treeAI(board,player)
