@@ -61,15 +61,17 @@ def nn_create():
     cnn_viz(net)
     optimizer = tr.optim.SGD(net.parameters(), lr=0.00001, momentum=0.9)
 
-    #training_examples,testing_examples,baseline = generate_examples()
-    #print("train:", training_examples[1])
+    training_examples,testing_examples,baseline = generate_examples()
+    print("train example:", training_examples[1])
     
     states, utilities = zip(*training_examples)
+    print("States train1:", states[1])
     training_batch = tr.stack(tuple(map(encode, states))), tr.tensor(utilities)
 
-    print("train",training_batch[1])
+    print("train batch:",training_batch[1])
 
     states, utilities = zip(*testing_examples)
+    print("States train2:", states[1])
     testing_batch = tr.stack(tuple(map(encode, states))), tr.tensor(utilities)
     
     curves = [], []
@@ -105,7 +107,7 @@ def dl_minimax(state, max_depth, eval_fn):
         return 0, eval_fn(state)
     else:
         child_utilities = [
-            dl_minimax(insert_atom(board,(row,col),player), max_depth-1, eval_fn(state))[1]
+            dl_minimax(insert_atom(board,(row,col),player), max_depth-1, eval_fn(state))[0]
             for row,col in valid_states(board,player)]
 
         if player == -1: a = np.argmax(child_utilities)

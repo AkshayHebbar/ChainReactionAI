@@ -52,3 +52,11 @@ IMPORTANT NOTE!
 
 If the game is being run on a Windows system, make no changes to the code. If the game is being run on a Macintosh System, make the following changes in ‘print_board.py’ under display.
 Comment the lines plt.ion(), plt.pause(5) and plt.close() except  plt.show(block = False). 
+
+TreeAI +NN = We have tried several configurations of layers for input to_hidden and hidden to_output, however we are currently unable to completely process the request.
+We are able to generate the training and testing examples with augmentation which increases the size from 100 to 800 scenarious. 
+The depth for minimax is considered 2 since the state space is very large and we have constraint on recursive limit and higher depts might lead to exceeding the limit.
+Partial output is availale due to kernel size error. Please do not use this option for game or simulation untill updates are available.
+
+Enjoy the Game !
+

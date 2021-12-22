@@ -8,6 +8,17 @@ from PlayGame.play_game import insert_atom
 
 # Code to generate training data
 # Each training example is an intermediate game state, paired with its minimax value
+#def minimax(state):
+#    board,player = state
+#    if game_over(board,player):
+#        return calculate_score(board,player)
+#    else:
+#        child_utilities = [
+#            minimax( insert_atom( board,(row,col),player ))
+#                     for row,col in valid_states(board,player) ]
+#        if player==-1: return max(child_utilities)
+#        if player==1: return min(child_utilities)
+
 
 def random_state(depth=0, size=(3,3)):
     m,n=size
@@ -28,7 +39,10 @@ def generate(num_examples, depth, size):
         state = random_state(depth, size)
         board,player = state
         nodecount=0
-        utility = minimax(state,depth,evaluate(board,player),nodecount)[2]
+        print("Depth:",depth)
+        utility = minimax(state,depth,evaluate,nodecount)[1]
+        print("minimax utility",utility)
+        #utility = minimax(state)
         examples.append((state, utility))
     return examples
 
@@ -50,13 +64,14 @@ def encode(state):
     # encoding[2,:,:] == 1 where there are "X"s, 0 elsewhere
     symbols = np.array([0,1,-1]).reshape(-1,1,1)
     onehot = (symbols == np.sign(state[0])).astype(np.float32)
+    print(tr.tensor(onehot))
     return tr.tensor(onehot)
 
 
 def generate_examples():
     # Generate a lot of training/testing data
-    training_examples = generate(num_examples = 100, depth=10, size=(4,4))
-    testing_examples = generate(num_examples = 50, depth=10, size=(4,4))
+    training_examples = generate(num_examples = 100, depth=2, size=(4,4))
+    testing_examples = generate(num_examples = 50, depth=2, size=(4,4))
 
     # augment training data
     print("Not Augmented",len(training_examples))
@@ -64,7 +79,9 @@ def generate_examples():
     print("Augmented",len(training_examples))
 
     _, utilities = zip(*testing_examples)
+    print("Baseline util:", utilities)
     baseline_error =sum((u-0)**2 for u in utilities) / len(utilities)
     print("Baseline Error",baseline_error)
     print("training Ex:", training_examples[0])
+    print("testing Ex:", testing_examples[0])
     return training_examples,testing_examples, baseline_error

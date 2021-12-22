@@ -28,7 +28,7 @@ def simulate_game(opponent:int,size):
         if (opponent == 2 and player == -1):
             print("CNN Choosing pos")
             nodecount = 0
-            _, a, nodes = dl_minimax((board,player), 10, nn_eval)
+            _, a, nodes = dl_minimax((board,player), 2, nn_eval)
             pos = [(x,y) for x,y in valid_states(board,player)][a]
             codecount+=nodes
         elif (opponent == 1 and player == -1):
